@@ -24,7 +24,7 @@ jobs:
 
       - name: Build and Convert the Release macOS version
         run: |
-          xcrun safari-web-extension-converter main --macos-only --no-open --force --swift --no-prompt --project-location /Users/runner/work/release --app-name ImprovedTube --bundle-identifier ImprovedTube
+          xcrun safari-web-extension-converter . \ --macos-only --no-open --force --swift --no-prompt --project-location /Users/runner/work/release --app-name ImprovedTube --bundle-identifier ImprovedTube
           cd /Users/runner/work/release/ImprovedTube/
           sed -i '' -e 's/MARKETING_VERSION \= [^\;]*\;/MARKETING_VERSION = ${{ github.ref_name }};/' ImprovedTube.xcodeproj/project.pbxproj
           xcrun agvtool new-version ${{ github.ref_name }}
